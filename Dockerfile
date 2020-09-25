@@ -127,6 +127,11 @@ RUN set -ex && apt-get update && apt-get install -y --no-install-recommends \
 RUN npm config set unsafe-perm true
 RUN npm i -g ts-protoc-gen@0.12.0
 
+# Angular (ngx) support
+
+RUN npm i -g tslib@^2.0.0 @ngx-grpc/protoc-gen-ng@2.0.4 
+# @ngx-grpc/core@2.0.4 @angular/core@>=8.0.0 rxjs@^6.0.0 @ngx-grpc/common@2.0.4 zone.js@^0.11.3 google-protobuf@^3.10.0 @types/google-protobuf 
+
 COPY --from=build /tmp/googleapis/google/ /opt/include/google
 COPY --from=build /tmp/api-common-protos/google/ /opt/include/google
 
